@@ -1,8 +1,8 @@
-val scala3Version = "2.13.7"
+val scala3Version = "2.13.6"
 
 val zhttpVersion = "1.0.0.0-RC17"
 
-lazy val root = project
+lazy val root = (project
   .in(file("."))
   .settings(
     name := "ZIO http Twirl",
@@ -14,4 +14,6 @@ lazy val root = project
 
     libraryDependencies += "io.d11" %% "zhttp"      % zhttpVersion,
 // libraryDependencies += "io.d11" %% "zhttp-test" % zhttpVersion % Test,
-  )
+  )).enablePlugins(SbtTwirl)
+
+  Global / onChangedBuildSource := ReloadOnSourceChanges
